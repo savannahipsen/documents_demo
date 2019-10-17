@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <card class="index-card">
+    <div class="text-center">
+      <p id="notice" style="display:inline-block"><%= notice %></p>
+    </div>
+    <p class="doc-title-name">
+      <strong><%= @document.name %></strong>
+    </p>
+    <p>
+      <strong>Mime type:</strong>
+      <%= @document.mime_type %>
+    </p>
+    <p>
+      <strong>Size:</strong>
+      <%= @document.display_size %>
+    </p>
+    <p>
+      <strong>Account ID:</strong>
+      <%= @document.account_id %>
+    </p>
+    <p>
+      <strong>Owner:</strong>
+      <%= @document.file_owner %>
+    </p>
+    <p>
+      <strong>Assigned Uuid:</strong>
+      <%= @document.uuid if @document.uuid %>
+    </p>
+    <p>
+      <strong>Tags:</strong>
+      <%= @tags.to_sentence if @tags %>
+    </p>
+    <p>
+      <% if @document.file_upload.attached? %>
+        <strong>Document:</strong>
+        <%= link_to 'View', polymorphic_url(@document.file_upload)  %> |
+        <%= link_to 'Download', rails_blob_path(@document.file_upload, disposition: :attachment) %>
+      <% end %>
+      <%#= image_tag url_for(@document.file_upload) %>
+    </p>
+    <div class="text-center">
+      <div class="option-links">
+        <%= link_to 'Back', documents_path %> |
+        <%= link_to 'Edit', edit_document_path %>
+      </div>
+    </div>
+  </card>
+</div>

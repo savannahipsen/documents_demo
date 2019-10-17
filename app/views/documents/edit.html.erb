@@ -1,0 +1,14 @@
+<div class="row justify-content-center">
+  <card class="edit-card">
+    <h2 class="doc-title">Editing Document</h2>
+    <card-body>
+      <%= render 'form', document: @document %>
+      <div class="text-center">
+        <div class="option-links">
+          <%= link_to 'Show', @document %> |
+          <%= link_to 'Back', documents_path %>
+        </div>
+      </div>
+    </card-body>
+  </card>
+</div>

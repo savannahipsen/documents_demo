@@ -1,0 +1,80 @@
+<%= form_with(model: document, local: true) do |form| %>
+  <% if document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+      <ul>
+      <% document.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :name %>
+  </div>
+  <div class="field">
+    <%= form.label :file_owner %>
+    <%= form.text_field :file_owner, id: :file_owner %>
+  </div>
+  <div class="field">
+    <%= form.label :account_id, 'Account ID' %>
+    <%= form.text_field :account_id, id: :account_id %>
+  </div>
+  <div class="text-center">
+    <div class="tag-search justify-content-center">
+  <!--      Tags:-->
+      <%= select_tag 'tags[]', options_for_select(@tags), multiple: true, class: "document-tag-selection", id: "document-tags" %>
+    </div>
+  </div>
+  <% if @document.file_upload.attached? %>
+    <div class="text-center">
+      <div class="option-links">
+        <%= link_to 'View', polymorphic_url(document.file_upload)  %> |
+        <%= link_to 'Download', rails_blob_path(document.file_upload, disposition: :attachment) %> |
+        <span id="new-document"><%= link_to 'Upload New', :remote => :true %></span>
+      </div>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <div class="field file-upload" id="file-upload-field">
+        <%= form.file_field :file_upload, id: :file_upload %>
+      </div>
+    </div>
+  <% end %>
+  <div class="text-center edit-file-upload" style="display:none;">
+    <div class="field file-upload" id="file-upload-field">
+      <%= form.file_field :file_upload, id: :file_upload %>
+    </div>
+  </div>
+  <div class="text-center">
+    <div class="submit-button">
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+<script>
+    $(document).ready(function() {
+        $('.document-tag-selection').each(function() {
+            $(this).select2({
+                tags: true,
+                tokenSeparators: [','],
+                theme: 'bootstrap',
+                placeholder: 'Document tags',
+            });
+        });
+
+        $('#new-document').on("click", function(){
+            $('.option-links').hide();
+            $('.edit-file-upload').show()
+        });
+    });
+</script>
