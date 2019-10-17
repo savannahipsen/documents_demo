@@ -60,15 +60,11 @@ class DocumentsController < ApplicationController
   def update
     if params["tags"]
       assign_document_tags(params["tags"])
-    end 
-    respond_to do |format|
-      if @document.update(document_params) && @document.post_document_updates
-        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
-        # format.json { render :show, status: :ok, location: @document }
-      else
-        format.html { render :edit }
-        # format.json { render json: @document.errors, status: :unprocessable_entity }
-      end
+    end
+    if @document.update(document_params) && @document.post_document_updates
+      redirect_to @document, notice: 'Document was successfully updated.'
+    else
+      render :edit
     end
   end
 

@@ -1,18 +1,18 @@
 <div class="row justify-content-center">
-  <card class="index-card justify-content-center">
+  <card class="search-card justify-content-center">
     <p id="notice" class="text-center"><%= notice %></p>
     <h2 class="doc-title">Search Documents</h2>
-    <h6 class="doc-title">(case-sensitive)</h6>
-
     <card-body>
       <div class="text-center">
         <div class="row document-search">
           <%= form_tag search_documents_path, :method => :get, :class => 'search-form' do %>
             <%= text_field_tag 'tags[]', params[:tags], class: 'tags-field' %>
-            <%= submit_tag 'Search By Tag', :class => 'button page-action', data: {disable_with: 'Please wait'} %>
-          <div style="margin-top:10px;">
+            <%= submit_tag 'Search By Tag', :class => 'button page-action tags-field-submit', data: {disable_with: 'Please wait'} %>
+            <br/>(ie: badge, spill, country)
+          <div class="metadata-search" style="margin-top:10px;">
             <%= text_field_tag 'metadata[]', params[:metadata], class: 'metadata-field' %>
-            <%= submit_tag 'Search By Metadata', :class => 'button page-action', data: {disable_with: 'Please wait'} %>
+            <%= submit_tag 'Search By Metadata', :class => 'button page-action metadata-submit', data: {disable_with: 'Please wait'} %>
+            <br/>(ie: slimy:punch, file_owner: Sav)
           </div>
           <div class="text-center">
             <button id="clear-search-data"class="btn btn-link">Clear Search</button>
@@ -20,20 +20,21 @@
           <% end %>
         </div>
       </div>
-
-      <div class="doc-search-results">
-        <% if @parsed_document_results %>
-          <% @parsed_document_results.each do |document| %>
-            <li>Name: <%= document["name"] %>, UUID: <%= document["Uuid"] %></li>
-          <% end %>
-        <% else %>
-          <div class="text-center">
-            No Document Results
-          </div>
-        <% end %>
-      </div>
     </card-body>
   </card>
+</div>
+<div class="text-center">
+  <div class="doc-search-results">
+    <% if @parsed_document_results %>
+      <% @parsed_document_results.each do |document| %>
+        <li>Name: <%= document["name"] %>, UUID: <%= document["Uuid"] %></li>
+      <% end %>
+    <% else %>
+      <div class="text-center">
+        No Document Results
+      </div>
+    <% end %>
+  </div>
 </div>
 <div class="text-center back-link">
   <%= link_to "Back", documents_path, class: "back-to-index" %>
@@ -44,4 +45,13 @@
       $(".tags-field").val("");
       $(".metadata-field").val("")
   });
+
+  $(".tags-field-submit").on("click", function(){
+      $(".metadata-field").val("")
+  });
+
+  $(".metadata-submit").on("click", function(){
+      $(".tags-field").val("");
+  });
+
 </script>
