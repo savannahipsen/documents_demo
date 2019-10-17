@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27e70aab-ad30-42f3-920f-e0313acfff03" name="Default Changelist" comment="" />
+    <list default="true" id="27e70aab-ad30-42f3-920f-e0313acfff03" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
     <ignored path="$PROJECT_DIR$/public/system/" />
@@ -27,7 +29,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="Gemfile" value="10" />
+          <entry key="Gemfile" value="11" />
           <entry key="coffee" value="1" />
           <entry key="css" value="1" />
           <entry key="erb" value="29" />
@@ -50,14 +52,14 @@
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="RHTML" value="29" />
           <entry key="RNG Compact" value="1" />
-          <entry key="Ruby" value="101" />
+          <entry key="Ruby" value="102" />
           <entry key="SCSS" value="8" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Gemfile" value="71" />
+          <entry key="Gemfile" value="72" />
           <entry key="css" value="3" />
           <entry key="erb" value="4376" />
           <entry key="js" value="123" />
@@ -73,7 +75,7 @@
           <entry key="JavaScript" value="123" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="RHTML" value="4376" />
-          <entry key="Ruby" value="10706" />
+          <entry key="Ruby" value="10707" />
           <entry key="SCSS" value="794" />
           <entry key="YAML" value="60" />
         </counts>
@@ -124,10 +126,10 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/documents_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="343">
+                <state relative-caret-position="262">
                   <caret line="62" column="8" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
                 </state>
               </provider>
@@ -150,6 +152,15 @@
                   <folding>
                     <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#card-body#0;n#card#0;n#div#0;n#!!top" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Gemfile">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="498">
+                  <caret line="38" column="27" lean-forward="true" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
                 </state>
               </provider>
             </entry>
@@ -275,7 +286,6 @@
         <option value="$PROJECT_DIR$/spec/services/filely_api/document.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/spec/rails_helper.rb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/models/document.rb" />
         <option value="$PROJECT_DIR$/app/views/documents/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/documents/_form.html.erb" />
@@ -286,6 +296,7 @@
         <option value="$PROJECT_DIR$/app/views/documents/show.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/documents.scss" />
         <option value="$PROJECT_DIR$/app/controllers/documents_controller.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
       </list>
     </option>
   </component>
@@ -518,12 +529,12 @@
       <updated>1569537503363</updated>
       <workItem from="1569537504842" duration="40857000" />
       <workItem from="1569966570910" duration="34451000" />
-      <workItem from="1570215316923" duration="148912000" />
+      <workItem from="1570215316923" duration="149526000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224220000" />
+    <option name="totallyTimeSpent" value="224834000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="6" />
@@ -764,13 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="50" lean-forward="true" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/application.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -901,8 +905,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/documents_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
+        <state relative-caret-position="262">
           <caret line="62" column="8" lean-forward="true" selection-start-line="62" selection-start-column="8" selection-end-line="62" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="38" column="27" lean-forward="true" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
         </state>
       </provider>
     </entry>

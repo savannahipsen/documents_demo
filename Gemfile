@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'pry'
 
 #FRONT-END
-gem 'bootstrap', '~> 4.2.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails', '~> 4.3.3'
 gem 'select2-rails'
 
