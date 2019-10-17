@@ -25,8 +25,7 @@
   </div>
   <div class="text-center">
     <div class="tag-search justify-content-center">
-  <!--      Tags:-->
-      <%= select_tag 'tags[]', options_for_select(@tags), multiple: true, class: "document-tag-selection", id: "document-tags" %>
+      <%= select_tag 'tags[]', options_for_select(@tags, :selected => @tags), multiple: true, class: "document-tag-selection", id: "document-tags" %>
     </div>
   </div>
   <% if @document.file_upload.attached? %>
@@ -37,6 +36,11 @@
         <span id="new-document"><%= link_to 'Upload New', :remote => :true %></span>
       </div>
     </div>
+    <div class="text-center edit-file-upload" style="display:none;">
+      <div class="field file-upload" id="file-upload-field">
+        <%= form.file_field :file_upload, id: :file_upload %>
+      </div>
+    </div>
   <% else %>
     <div class="text-center">
       <div class="field file-upload" id="file-upload-field">
@@ -44,11 +48,6 @@
       </div>
     </div>
   <% end %>
-  <div class="text-center edit-file-upload" style="display:none;">
-    <div class="field file-upload" id="file-upload-field">
-      <%= form.file_field :file_upload, id: :file_upload %>
-    </div>
-  </div>
   <div class="text-center">
     <div class="submit-button">
       <div class="actions">

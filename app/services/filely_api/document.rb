@@ -131,15 +131,17 @@ module FilelyApi
           response = @connection.get do |request|
             request.path = path
           end
+
+
         end
 
         def search_documents_by_metadata(metadata)
           return unless metadata
 
           metadata_params = metadata[0].gsub(/\s+/, "")
-          and_path = "#{BASE}/metadata.json?and=#{metadata_params}"
+          path = "#{BASE}/metadata.json?and=#{metadata_params}"
 
-          response = Faraday.get(and_path)
+          response = Faraday.get(path)
           response.body
         end
 
@@ -168,37 +170,7 @@ module FilelyApi
           metadata = document.attributes.slice("file_owner").merge("account_id" => account_id_string)
           metadata.to_json
         end
-
-        # attributes = {"account_id" => (document.account_id).to_s, "file_owner" => document.file_owner}
-        # attributes
-        #
-        #
-        #
-        # def get_file(root_path, query = {})
-        #   binding.pry
-        #   query_string = query.map{|k,v| "#{k}=#{v}"}.join("&")
-        #   path = query.empty? ? root_path : "#{root_path}?#{query_string}"
-        #   response = api.get(path)
-        #   # binding.pry
-        #   [JSON.parse(response.body), response.status]
-        # end
-
-        # def get_json(root_path, query = {})
-        #   query_string = query.map{|k,v| "#{k}=#{v}"}.join("&")
-        #   path = query.empty?? root_path : "#{root_path}?#{query_string}"
-        #   response = api.get(path)
-        #   [JSON.parse(response.body), response.status]
-        # end
-
-        # def api
-        #   Connection.api
-        # end
       end
-
-      # private
-
-
-
     end
 
   end
