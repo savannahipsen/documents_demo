@@ -88,6 +88,40 @@ module FilelyApi
           response.body
         end
 
+        def update_document_mime_type(document)
+          new_document_mime_type = document.file_upload.blob.content_type
+          path = "#{BASE}/#{document.uuid}/mime_type"
+
+          @connection = Faraday.new(url: BASE) do |faraday|
+            faraday.response :logger
+            faraday.adapter Faraday.default_adapter
+          end
+
+          response = @connection.put do |request|
+            request.path = path
+            request.body = new_document_mime_type
+          end
+
+          response.body
+        end
+
+        def update_document_size(document)
+          new_document_size = document.file_upload.blob.byte_size
+          path = "#{BASE}/#{document.uuid}/size"
+
+          @connection = Faraday.new(url: BASE) do |faraday|
+            faraday.response :logger
+            faraday.adapter Faraday.default_adapter
+          end
+
+          response = @connection.put do |request|
+            request.path = path
+            request.body = new_document_size.to_json
+          end
+
+          response.body
+        end
+
         # not yet implemented in filely
         def get_all_available_tags
           path = "#{BASE}/tags.json"
@@ -131,8 +165,7 @@ module FilelyApi
           response = @connection.get do |request|
             request.path = path
           end
-
-
+          response.body
         end
 
         def search_documents_by_metadata(metadata)
