@@ -36,13 +36,12 @@
         <%= link_to 'View', polymorphic_url(@document.file_upload)  %> |
         <%= link_to 'Download', rails_blob_path(@document.file_upload, disposition: :attachment) %>
       <% end %>
-      <%#= image_tag url_for(@document.file_upload) %>
     </p>
-    <div class="text-center">
-      <div class="option-links">
-        <%= link_to 'Back', documents_path %> |
-        <%= link_to 'Edit', edit_document_path %>
-      </div>
-    </div>
   </card>
+</div>
+<div class="text-center">
+  <div class="option-links back-link">
+    <%= link_to 'Back', documents_path %> |
+    <%= link_to 'Edit', edit_document_path %>
+  </div>
 </div>

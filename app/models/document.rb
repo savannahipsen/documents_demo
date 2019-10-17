@@ -33,11 +33,12 @@ class Document < ApplicationRecord
   end
 
   def post_document_updates
-    # so smelly
+    #TODO: so bad... need to check which attr changed...
     FilelyApi::Document::Request.update_document_name(self)
     FilelyApi::Document::Request.update_document_tags(self)
     FilelyApi::Document::Request.update_document_mime_type(self)
     FilelyApi::Document::Request.update_document_size(self)
+    FilelyApi::Document::Request.update_document_metadata(self)
   end
 
   def self.fetch_all_tags

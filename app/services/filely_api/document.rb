@@ -70,6 +70,24 @@ module FilelyApi
           response.body
         end
 
+        def update_document_metadata(document)
+          new_metadata = metadatify_attributes(document)
+
+          path = "#{BASE}/#{document.uuid}/metadata.json"
+
+          @connection = Faraday.new(url: BASE) do |faraday|
+            faraday.response :logger
+            faraday.adapter Faraday.default_adapter
+          end
+
+          response = @connection.put do |request|
+            request.path = path
+            request.body = new_metadata
+          end
+
+          response.body
+        end
+
         def update_document_name(document)
           new_document_name = document.name
 
