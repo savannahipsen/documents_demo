@@ -8,6 +8,7 @@ class Document < ApplicationRecord
 
   validates_presence_of :name
   validates_presence_of :account_id
+  validates_presence_of :file_upload
 
   def size
     file_upload.attached? ? self.file_upload.blob.byte_size : 0
@@ -24,7 +25,24 @@ class Document < ApplicationRecord
   def fetch_document_tags
     document_uuid = self.uuid
     tags_from_filely = FilelyApi::Document::Request.get_document_tags(document_uuid)
-    JSON.parse(tags_from_filely)
+    unless tags_from_filely == "null" || tags_from_filely.nil?
+      parsed_tags = JSON.parse(tags_from_filely)
+      parsed_tags.map! { |tag| tag.strip.downcase.tr("_", " ") }
+    end
+    parsed_tags.present? ? parsed_tags : []
+  end
+
+  def fetch_document_metadata
+    document_uuid = self.uuid
+    metadata_from_filely = FilelyApi::Document::Request.get_document_metadata(document_uuid)
+    unless metadata_from_filely == "null" || metadata_from_filely.nil?
+      parsed_metadata = JSON.parse(metadata_from_filely)
+      parsed_metadata.each { |k, v| parsed_metadata[k] = v.tr("_", " ").titleize }
+
+      self.account_id = parsed_metadata["account_id"]
+      self.file_owner = parsed_metadata["file_owner"]
+      self.save!
+    end
   end
 
   def post_document

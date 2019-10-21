@@ -2,7 +2,6 @@
   <% if document.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
-
       <ul>
       <% document.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,22 +9,23 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :name %>
-  </div>
-  <div class="field">
-    <%= form.label :file_owner %>
-    <%= form.text_field :file_owner, id: :file_owner %>
-  </div>
-  <div class="field">
-    <%= form.label :account_id, 'Account ID' %>
-    <%= form.text_field :account_id, id: :account_id %>
+  <div class="text-center">
+    <div class="field">
+      <span class="text-left"><%= form.label :name %></span>
+      <%= form.text_field :name, id: :name %>
+    </div>
+    <div class="field">
+      <%= form.label :file_owner %>
+      <%= form.text_field :file_owner, id: :file_owner %>
+    </div>
+    <div class="field">
+      <%= form.label :account_id, 'Account ID' %>
+      <%= form.text_field :account_id, id: :account_id %>
+    </div>
   </div>
   <div class="text-center">
     <div class="tag-search justify-content-center">
-      <%= select_tag 'tags[]', options_for_select(@tags, :selected => @tags), multiple: true, class: "document-tag-selection", id: "document-tags" %>
+      <%= select_tag 'tags[]', options_for_select(@tags || [], :selected => @tags || []), multiple: true, class: "document-tag-selection", id: "document-tags" %>
     </div>
   </div>
   <% if @document.file_upload.attached? %>

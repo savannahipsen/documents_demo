@@ -1,43 +1,44 @@
 <div class="row justify-content-center">
-  <card class="index-card">
-    <div class="text-center">
-      <p id="notice" style="display:inline-block"><%= notice %></p>
-    </div>
-    <p class="doc-title-name">
-      <strong><%= @document.name %></strong>
-    </p>
-    <p>
-      <strong>Mime type:</strong>
-      <%= @document.mime_type %>
-    </p>
-    <p>
-      <strong>Size:</strong>
-      <%= @document.display_size %>
-    </p>
-    <p>
-      <strong>Account ID:</strong>
-      <%= @document.account_id %>
-    </p>
-    <p>
-      <strong>Owner:</strong>
-      <%= @document.file_owner %>
-    </p>
-    <p>
-      <strong>Assigned Uuid:</strong>
-      <%= @document.uuid if @document.uuid %>
-    </p>
-    <p>
-      <strong>Tags:</strong>
-      <%= @tags.to_sentence if @tags %>
-    </p>
-    <p>
+  <div class="card main-card-style border-info mb-3">
+    <div class="card-header doc-header text-center"><%= @document.name %></div>
+    <div class="card-body">
+      <div class="text-center">
+        <p id="notice"><%= notice %></p>
+      </div>
+      <p>
+        <span class="doc-header"><strong>Assigned Uuid:</strong></span>
+          <%= @document.uuid if @document.uuid %>
+      </p>
+      <p>
+        <span class="doc-header" style="margin-bottom:20px;"><strong>Mime type:</strong></span>
+        <%= @document.mime_type %>
+        <span class="pull-right">
+          <span class="doc-header"><strong>Size:</strong></span>
+          <%= @document.display_size %>
+        </span>
+      </p>
+      <p>
+        <span class="doc-header" style="margin-bottom:20px;"><strong>Account ID:</strong></span>
+        <%= @document.account_id %>
+        <span class="pull-right">
+          <span class="doc-header"><strong>File Owner:</strong></span>
+          <%= @document.file_owner %>
+        </span>
+      </p>
+      <p>
+        <span class="doc-header"><strong>Tags:</strong></span>
+        <%= @tags.to_sentence if @tags %>
+      </p>
       <% if @document.file_upload.attached? %>
-        <strong>Document:</strong>
-        <%= link_to 'View', polymorphic_url(@document.file_upload)  %> |
-        <%= link_to 'Download', rails_blob_path(@document.file_upload, disposition: :attachment) %>
+        <div class="text-center">
+          <div class="view-download-options">
+            <p class="pull-left"><%= link_to 'View', polymorphic_url(@document.file_upload) %></p>
+            <p class="pull-right"><%= link_to 'Download', rails_blob_path(@document.file_upload, disposition: :attachment) %></p>
+          </div>
+        </div>
       <% end %>
-    </p>
-  </card>
+    </div>
+  </div>
 </div>
 <div class="text-center">
   <div class="option-links back-link">
@@ -45,3 +46,17 @@
     <%= link_to 'Edit', edit_document_path %>
   </div>
 </div>
+
+
+<!--  <card class="new-card">-->
+<!--    <h2 class="doc-title">New Document</h2>-->
+<!--    <card-body>-->
+
+<!--    </card-body>-->
+<!--  </card>-->
+<!--</div>-->
+<!--<div class="text-center">-->
+<!--  <div class="option-links back-link">-->
+<%#= link_to 'Back', documents_path %>
+<!--  </div>-->
+<!--</div>-->

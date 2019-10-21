@@ -35,17 +35,20 @@ div {
 
 #notice {
   color: green;
+  margin: 0;
+  padding-top: 5px;
+  background-color: #c8e0ee;
 }
 
 .field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+  //padding-bottom: 25px;
+  //background-color: red;
+  //display: table;
 }
 
 #error_explanation {
-  width: 450px;
-  border: 2px solid red;
+  width: auto;
+  border: 2px solid #f39898;
   padding: 7px 7px 0;
   margin-bottom: 20px;
   background-color: #f0f0f0;
@@ -56,8 +59,8 @@ div {
     padding: 5px 5px 5px 15px;
     font-size: 12px;
     margin: -7px -7px 0;
-    background-color: #c00;
-    color: #fff;
+    background-color: #f39898;
+    color: #bf3737;
   }
 
   ul li {

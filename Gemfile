@@ -39,6 +39,7 @@ gem 'pry'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails', '~> 4.3.3'
 gem 'select2-rails'
+gem 'font-awesome-rails'
 
 # API
 gem 'dotenv-rails'

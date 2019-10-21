@@ -1,18 +1,20 @@
 <div class="row justify-content-center">
-  <card class="search-card justify-content-center">
-    <p id="notice" class="text-center"><%= notice %></p>
-    <h2 class="doc-title">Search Documents</h2>
-    <card-body>
+  <div class="card main-card-style search-card border-info mb-3">
+    <div class="card-header doc-header text-center">Search Documents</div>
+    <% if notice %>
+      <p id="notice" class="text-center"><%= notice %></p>
+    <% end %>
+    <div class="card-body">
       <div class="text-center">
         <div class="row document-search">
           <%= form_tag search_documents_path, :method => :get, :class => 'search-form' do %>
-            <%= text_field_tag 'tags[]', params[:tags], class: 'tags-field' %>
+            <%= text_field_tag 'tags[]', params[:tags], class: 'tags-field' %><br/>
+            (ie: badge, spill, country)<br/>
             <%= submit_tag 'Search By Tag', :class => 'button page-action tags-field-submit', data: {disable_with: 'Please wait'} %>
-            <br/>(ie: badge, spill, country)
           <div class="metadata-search" style="margin-top:10px;">
-            <%= text_field_tag 'metadata[]', params[:metadata], class: 'metadata-field' %>
+            <%= text_field_tag 'metadata[]', params[:metadata], class: 'metadata-field' %><br/>
+            (ie: slimy:punch, file_owner : Alice)<br/>
             <%= submit_tag 'Search By Metadata', :class => 'button page-action metadata-submit', data: {disable_with: 'Please wait'} %>
-            <br/>(ie: slimy:punch, file_owner : Alice)
           </div>
           <div class="text-center">
             <button id="clear-search-data"class="btn btn-link">Clear Search</button>
@@ -20,13 +22,13 @@
           <% end %>
         </div>
       </div>
-    </card-body>
-  </card>
+    </div>
+  </div>
 </div>
 <div class="text-center">
   <div class="doc-search-results">
-    <% if @parsed_document_results %>
-      <% @parsed_document_results.each do |document| %>
+    <% if @documents %>
+      <% @documents.each do |document| %>
         <li>Name: <%= document["name"] %>, UUID: <%= document["Uuid"] %></li>
       <% end %>
     <% else %>

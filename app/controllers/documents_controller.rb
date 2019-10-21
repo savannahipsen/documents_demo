@@ -9,23 +9,25 @@ class DocumentsController < ApplicationController
   end
 
   def search
-    # so gross...
+    # so gross
     return unless params[:tags] || params[:metadata]
-    if params[:tags][0].present?
-      document_tags = params[:tags]
-      @documents = Document.search_by_tags(document_tags)
-    elsif params[:metadata][0].present?
-      document_metadata = params[:metadata]
-      @documents = Document.search_by_metadata(document_metadata)
+    tags = params[:tags]
+    metadata = params[:metadata]
+
+    if params[:tags].all?(&:present?)
+      @documents = Document.search_by_tags(tags)
+    elsif params[:metadata].all?(&:present?)
+      @documents = Document.search_by_metadata(metadata)
     end
 
-    @parsed_document_results = JSON.parse(@documents) if @documents
+    @documents
   end
 
   # GET /documents/1
   # GET /documents/1.json
   def show
     @tags = @document.fetch_document_tags || []
+    @metadata = @document.fetch_document_metadata
   end
 
   # GET /documents/new
@@ -48,7 +50,9 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
     assign_document_tags(params["tags"])
+    # saving document for the file_upload.blob information (mime_type, size)
     if @document.save && @document.post_document
+    # if @document.post_document
       redirect_to @document, notice: 'Document was successfully created.'
     else
       render 'new'
@@ -61,6 +65,7 @@ class DocumentsController < ApplicationController
     if params["tags"]
       assign_document_tags(params["tags"])
     end
+    # updating document for the file_upload.blob information (mime_type, size)
     if @document.update(document_params) && @document.post_document_updates
       redirect_to @document, notice: 'Document was successfully updated.'
     else

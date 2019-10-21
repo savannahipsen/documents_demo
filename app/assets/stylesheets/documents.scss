@@ -8,11 +8,15 @@
 }
 
 .doc-header {
-  color: #0072bc;
+  color: rgb(95, 150, 183) !important;
 }
 
 .doc-table th {
   padding: 10px;
+}
+
+.attr-display {
+  display: inline-block;
 }
 
 .new-doc {
@@ -23,8 +27,16 @@
   display: inline-block;
 }
 
+.fa-trash {
+  font-size: large !important;
+}
+
 .field input {
   float: right;
+}
+.field label {
+  float: left;
+  padding-left: 12%;
 }
 
 .doc-title-name {
@@ -33,50 +45,66 @@
   color: #005389;
 }
 
-.actions input {
-  margin-top: 12px;
-  background-color: #00538926;
+.field {
+  width: 90%;
+  display: flow-root;
 }
 
-.index-card {
-  background-color: #dcecf185;
-  padding: 20px;
+//.index-card {
+//  background-color: #dcecf185;
+//  padding: 20px;
+//}
+
+.main-card-style {
+  margin-top: 2%;
+  width: 40%
 }
 
-.edit-card {
-  background-color: #dcecf185;
-  padding: 20px;
-  width: 28%;
-}
 
 .new-card {
-  background-color: #dcecf185;
-  padding: 20px;
-  width: 28%;
+  width: 32%;
 }
 
 .search-card {
-  background-color: #dcecf185;
-  padding: 20px;
-  width: 28%;
+  width: 30%;
 }
+
+.edit-card {
+  width: 30%;
+}
+
+.view-download-options {
+  display:inline-block;
+  width:50%;
+}
+
 
 //links
 
 a {
-  color: #0072bcad;
+  color: rgb(127, 173, 201) !important;
 }
 
 a:visited {
-  color: #0da9ef;
+  color: #0b38a2;
 }
 
 a:hover {
-  background-color: #999999;
+  color: antiquewhite;
 }
 
-.back-link{
-  padding: 15px;
+.btn-link {
+  color: rgb(127, 173, 201) !important;
+}
+
+//.btn-link:hover
+
+//.back-link
+.actions input{
+  padding: 6px 10px;
+  margin-top: 12px;
+  background-color: rgb(231, 242, 248);
+  border-radius: 20px;
 }
 
 .select2 {
@@ -87,6 +115,17 @@ a:hover {
   margin-bottom: 4%;
   width: 100%;
   display: inline-block;
+}
+
+.tags-field-submit {
+  border-radius: 20px;
+  background-color: rgb(231, 242, 248);
+}
+
+.metadata-submit {
+  border-radius: 20px;
+  background-color: rgb(231, 242, 248);
+  margin-bottom: 5%;
 }
 
 .document-search {
@@ -110,3 +149,24 @@ a:hover {
   display: inline-block;
   text-align: left;
 }
+
+//bootstrap overrides
+
+.card-body {
+  padding-bottom: 0 !important;
+  background-color: rgb(200, 224, 238) !important;
+}
+
+.card-header {
+  font-size: x-large;
+  color: antiquewhite;
+}
+
+#notice {
+  display:inline-block;
+  padding-bottom: 20px;
+}
+
+//#file-upload-field input {
+  //border-radius: 20px;
+//}

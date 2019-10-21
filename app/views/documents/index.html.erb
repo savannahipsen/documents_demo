@@ -1,16 +1,29 @@
 <div class="row justify-content-center">
-  <card class="index-card">
-    <p id="notice" class="text-center"><%= notice %></p>
-    <h2 class="doc-title">Documents</h2>
-
-    <card-body>
+  <div class="card main-card-style border-info mb-3">
+    <div class="card-header doc-header text-center">Documents
+      <div class="pull-left">
+        <%= link_to search_documents_path do %>
+          <i class="fa fa-search"></i>
+        <% end %>
+      </div>
+      <div class="pull-right">
+        <%= link_to new_document_path do %>
+          <i class="fa fa-plus"></i>
+        <% end %>
+      </div>
+    </div>
+    <% if notice %>
+      <p id="notice" class="text-center"><%= notice %></p>
+    <% end %>
+    <div class="card-body">
       <table>
         <thead class="doc-table">
           <tr>
             <th class="doc-header">Name</th>
+            <th class="doc-header">File Owner</th>
             <th class="doc-header">Mime type</th>
-            <th class="doc-header">Size</th>
             <th class="doc-header">Account ID</th>
+            <th class="doc-header">Size</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -19,21 +32,19 @@
           <% @documents.each do |document| %>
             <tr>
               <td><%= link_to "#{document.name}", document %></td>
+              <td><%= document.file_owner %></td>
               <td><%= document.mime_type %></td>
-              <td><%= document.display_size %></td>
               <td><%= document.account_id %></td>
-              <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure you want to delete this document?' } %></td>
+              <td><%= document.display_size %></td>
+              <td>
+              <%= link_to document, method: :delete, data: { confirm: 'Are you sure you want to delete this document?' }, remote: true do %>
+                <i class="fa fa-trash"></i>
+              <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
-    </card-body>
-  </card>
-</div>
-
-<div class="row justify-content-center new-doc">
-  <%= link_to 'New Document', new_document_path %>
-</div>
-<div class="row justify-content-center">
-  <%= link_to 'Search Documents', search_documents_path %>
+    </div>
+  </div>
 </div>

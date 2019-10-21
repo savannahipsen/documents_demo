@@ -41,7 +41,7 @@ describe FilelyApi::Document::Request do
         # binding.pry
         # expect(document).to receive(:post_document)
 
-        binding.pry
+        # binding.pry
         document.post_document
 
         expect(document.post_document).not_to be_nil

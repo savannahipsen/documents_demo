@@ -1,13 +1,13 @@
 <div class="row justify-content-center">
-  <card class="new-card">
-    <h2 class="doc-title">New Document</h2>
-    <card-body>
+  <div class="card new-card main-card-style border-info mb-3">
+    <div class="card-header doc-header text-center">New Document</div>
+    <div class="card-body">
       <%= render 'form', document: @document %>
-    </card-body>
-  </card>
+    </div>
+  </div>
 </div>
 <div class="text-center">
-  <div class="option-links back-link">
+  <div class="option-links">
     <%= link_to 'Back', documents_path %>
   </div>
 </div>
